@@ -28,9 +28,6 @@ public class ApiController {
     @RequestMapping(value="/api/stocks", method= RequestMethod.GET, produces="application/json")
     @ResponseBody
     List<StockOverview> query () {
-        //StockOverview overview = (new SingleStockOverviewJob()).execute(javaSparkContext, "FOOO");
-        //StockOverview overview = (new SingleStockOverviewJob()).execute(javaSparkContext, new StockQuery("FOOO", LocalDate.now().minusDays(30)));
-        //return overview;
         List<StockOverview> overviews = (new AllStocksOverviewJob()).execute(javaSparkContext, new StockQuery(LocalDate.now().minusDays(30)));
         return overviews;
     }

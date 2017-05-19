@@ -37,6 +37,7 @@ public class BeanConfiguration {
                 "SparkDemo",
                 conf
         );
+        //context.addJar("/my/work/dir/spark-shared.jar");
 
         log.debug("SparkContext created");
         return context;
