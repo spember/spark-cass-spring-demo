@@ -1,0 +1,30 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+dependencies {
+    compile('org.pember:spark-shared:0.0.1-SNAPSHOT')
+	compile('org.springframework.boot:spring-boot-starter-web')
+
+	compile('org.apache.commons:commons-lang3:3.4')
+	runtime("ch.qos.logback:logback-core:1.1.6")
+	runtime("ch.qos.logback:logback-classic:1.1.6")
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+

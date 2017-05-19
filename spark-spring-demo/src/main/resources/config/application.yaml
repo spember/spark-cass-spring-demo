@@ -1,0 +1,16 @@
+---
+
+spark:
+  master: "local[2]"
+
+cassandra:
+  keyspace: "stock_data"
+  connection:
+    host: "127.0.0.1"
+
+#spark:
+#  cassandra:
+#    keyspace: "sales_data"
+#    connection:
+#      host: "172.30.10.196"
+#  master: "spark://ip-172-30-10-171:7077"

@@ -1,0 +1,52 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.github.jengelman.gradle.plugins:shadow:1.2.3"
+    }
+}
+
+apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+
+group = 'org.pember'
+version = '0.0.1-SNAPSHOT'
+
+ext.isSnapshot = version.contains('SNAPSHOT')
+
+jar {
+    manifest {
+        attributes 'Implementation-Title':  'Spark Demo Shared Files',
+                'Implementation-Version': version,
+                'Specification-Version':  version
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'org.pember'
+            artifactId 'spark-shared'
+            version '0.0.1-SNAPSHOT'
+
+            from components.java
+        }
+    }
+}
+
+dependencies {
+    compile('org.apache.commons:commons-lang3:3.4')
+    runtime("ch.qos.logback:logback-core:1.1.6")
+    runtime("ch.qos.logback:logback-classic:1.1.6")
+}
+
+shadowJar {
+    zip64 true
+}
+
+

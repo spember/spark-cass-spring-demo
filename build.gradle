@@ -1,0 +1,25 @@
+subprojects {
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        jcenter()
+    }
+
+    dependencies {
+        compile(group: 'com.datastax.spark', name: 'spark-cassandra-connector_2.11', version: '2.0.1') {
+            exclude group: 'com.fasterxml.jackson.core', module: 'jackson-databind'
+        }
+        compile(group: 'org.apache.spark', name: 'spark-core_2.11', version: '2.1.0') {
+            exclude group: 'com.fasterxml.jackson.core', module: 'jackson-databind'
+        }
+        compile(group: 'org.apache.spark', name: 'spark-sql_2.11', version: '2.1.0') {
+            exclude group: 'com.fasterxml.jackson.core', module: 'jackson-databind'
+        }
+
+        compile("com.datastax.cassandra:cassandra-driver-mapping:3.2.0")
+
+        compile('com.fasterxml.jackson.core:jackson-databind:2.8.8')
+    }
+}
